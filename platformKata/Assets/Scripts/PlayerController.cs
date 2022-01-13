@@ -77,16 +77,18 @@ public class PlayerController : MonoBehaviour
 
         animation_params();
         
+        ambulation();
 
+        
 
     }
     void Update()
     {
-        ambulation();
-
-        climb();
+       
         
         jump();
+
+        climb();
 
         wallJump();
     }
