@@ -121,6 +121,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
         {
+            isJumping = true;
+            jumpTimeCounter = jumpTime;
             rigidbody.velocity = Vector2.up * jumpForce;
         }
     
