@@ -196,20 +196,15 @@ public class PlayerController : MonoBehaviour
         if (isTouchingFront == true && Input.GetKey(KeyCode.LeftShift))
         {
             isClimbing = true;
-        }
-        else
-        {
-            isClimbing = false;
-        }
-
-        if (isClimbing == true)
-        {
             Debug.Log("you climbin");
             moveInput = 0;
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, climbInput * climbSpeed);
             animator.SetBool("isClimbing", true);
         }
-
+        else
+        {
+            isClimbing = false;
+        }
     }
 
     void animation_params()
