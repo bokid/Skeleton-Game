@@ -143,9 +143,9 @@ MonoBehaviour:
   wallSlidingSpeed: 10
   xWallForce: 10
   yWallForce: 10
-  wallJumpTime: 0.1
+  wallJumpTime: 0.5
   sprintSpeed: 12
-  extraJumpsValue: 0
+  extraJumpsValue: 1
   jumpTime: 0.1
   climbSpeed: 5
 --- !u!50 &4149950786768976956
