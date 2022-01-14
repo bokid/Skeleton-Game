@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
         animation_params();
         
-        ambulation();
+        ambulation_delegation();
 
         
 
@@ -93,18 +93,24 @@ public class PlayerController : MonoBehaviour
         wallJump();
     }
 
-    void ambulation()
+    void ambulation_delegation()
     {
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            rigidbody.velocity = new Vector2(moveInput * sprintSpeed, rigidbody.velocity.y);
-            animator.SetBool("isSprinting", true);
+            Vector2 temp_vector = new Vector2(moveInput * sprintSpeed, rigidbody.velocity.y);
+            ambulation(true, temp_vector);
         }
         else
         {
-            rigidbody.velocity = new Vector2(moveInput * speed, rigidbody.velocity.y);
-            animator.SetBool("isSprinting", false);
+            Vector2 temp_vector = new Vector2(moveInput * speed, rigidbody.velocity.y);
+            ambulation(false, temp_vector);
         }
+    }
+
+    void ambulation(bool sprint_state, Vector2 velocity)
+    {
+        rigidbody.velocity = velocity;
+        animator.SetBool("isSprinting", sprint_state);
     }
 
     void jump()
