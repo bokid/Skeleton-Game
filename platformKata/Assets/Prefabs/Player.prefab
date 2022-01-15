@@ -149,6 +149,7 @@ MonoBehaviour:
   extraJumpsValue: 1
   jumpTime: 0.1
   climbSpeed: 5
+  JumpSFX: {fileID: 8300000, guid: 8209f01107e50714dada81a408f94575, type: 3}
 --- !u!50 &4149950786768976956
 Rigidbody2D:
   serializedVersion: 4
@@ -234,10 +235,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4149950786768976945}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 54fbffa7130f51c48bb863ee30c5e764, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
