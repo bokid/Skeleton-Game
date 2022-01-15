@@ -41,13 +41,16 @@ public class PlayerController : MonoBehaviour
     public float climbSpeed;
 
     private bool isWalking;
-    private AudioSource audiosource;
+
+    public PlayerSounds playerSounds;
+
 
     void Start()
     {
         extraJumps = extraJumpsValue;
         rigidbody = GetComponent<Rigidbody2D>();
-        audiosource = GetComponent<AudioSource>();
+        //audiosource = GetComponent<AudioSource>();
+
     }
 
     void FixedUpdate()
@@ -99,11 +102,13 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 temp_vector = new Vector2(moveInput * sprintSpeed, rigidbody.velocity.y);
             ambulation(true, temp_vector);
+            //SoundManager.Instance.PlaySFX(playerSounds.sprint);
         }
         else
         {
             Vector2 temp_vector = new Vector2(moveInput * speed, rigidbody.velocity.y);
             ambulation(false, temp_vector);
+            //SoundManager.Instance.PlaySFX(playerSounds.walk);
         }
     }
 
@@ -111,10 +116,13 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity = velocity;
         animator.SetBool("isSprinting", sprint_state);
+        
     }
 
     void jump()
     {
+        
+
         if (isGrounded == true)
         {
             extraJumps = extraJumpsValue;
@@ -126,6 +134,9 @@ public class PlayerController : MonoBehaviour
             jumpTimeCounter = jumpTime;
             rigidbody.velocity = Vector2.up * jumpForce;
             extraJumps--;
+            SoundManager.Instance.PlaySFX(playerSounds.jump);
+            //Debug.Log("Playing Jump Sound" + playerSounds.jumpSFX);
+
         }
         else if (Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
         {
@@ -140,6 +151,8 @@ public class PlayerController : MonoBehaviour
             {
                 rigidbody.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
+                SoundManager.Instance.PlaySFX(playerSounds.jump);
+                //Debug.Log("Playing Jump Sound" + playerSounds.jumpSFX);
             }
             else
             {
@@ -214,6 +227,7 @@ public class PlayerController : MonoBehaviour
             moveInput = 0;
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, climbInput * climbSpeed);
             animator.SetBool("isClimbing", true);
+            SoundManager.Instance.PlaySFX(playerSounds.climb);
         }
 
     }
