@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
         isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, whatIsGround);
 
-        moveInput = Input.GetAxis("Horizontal");
+        GatherInput();
 
         animator.SetFloat("Speed", Mathf.Abs(moveInput));
 
@@ -94,6 +94,13 @@ public class PlayerController : MonoBehaviour
         climb();
 
         wallJump();
+    }
+
+
+    void GatherInput(){
+
+        moveInput = UnityEngine.Input.GetAxisRaw("Horizontal");
+
     }
 
     void ambulation_delegation()
