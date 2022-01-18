@@ -219,7 +219,8 @@ public class PlayerController : MonoBehaviour
             moveInput = 0;
             rigidbody.velocity = new Vector2(rigidbody.velocity.x, climbInput * climbSpeed);
             animator.SetBool("isClimbing", true);
-            SoundManager.Instance.PlaySFX(playerSounds.climb);
+            //not working because it is called every frame
+            //SoundManager.Instance.PlaySFX(playerSounds.climb);
         }
         else
         {
